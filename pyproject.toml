@@ -1,0 +1,110 @@
+[tool.isort]
+line_length = "120"
+# See https://github.com/timothycrosley/isort#multi-line-output-modes
+multi_line_output = "3"
+include_trailing_comma = "true"
+sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+default_section = "FIRSTPARTY"
+skip = "migrations"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.flakeheaven]
+baseline = "./.flake_baseline"
+max_line_length = 120
+# make output nice
+format = "grouped"
+# show line of source code in output
+show_source = true
+statistics = true
+inline_quotes = "double"
+
+[tool.flakeheaven.plugins]
+"*" = [
+    "+*", # enable all plugins
+    "-I*", # disable isort
+    "-DAR*", # disable docstring arguments linting by darglint
+# ignore errors:
+    "-D100", #  Docstring in public module
+    "-D104", #  Docstring in public package
+    "-D106", #  Docstring in public nested class
+    "-D202", #  No blank lines allowed after function docstring (conflicts with black)
+    "-D401", #  First line should be in imperative mood
+    "-D412", #  No blank lines allowed between a section header and its content
+    "-W503", #  line break before binary operator
+    "-WPS110", #  Forbid common names like data or items
+    "-WPS115", #  Upper case constant in class
+    "-WPS201", #  Found module with too many imports
+    "-WPS226", #  Found string literal over-use
+    "-WPS300", # Found local folder import
+    "-WPS305", #  Forbid f-strings
+    "-WPS306", #  Inherit from object
+    "-WPS317", # Found incorrect multi-line parameters
+    "-WPS331", #  Found local variable that are only used in `return` statements
+    "-WPS347", # Found vague import that may cause confusion
+    "-WPS348", #  Found a line that starts with a dot
+    "-WPS402", #  Found `noqa` comments overuse
+    "-WPS420", #  Found wrong keyword (del, pass)
+    "-WPS430", #  Found nested function
+    "-WPS433", # nested imports in celery tasks
+    "-WPS510", #  Found `in` used with a non-set container
+    "-D101",
+    "-D102",
+    "-D103",
+    "-WPS604",
+    "-WPS410",
+    "-WPS326",
+    "-C812",
+    "-WPS326",
+    "-C819",
+    "-E231",
+    "-WPS407",
+    "-F401",
+    "-WPS440",
+    "-WPS412",
+    "-F403",
+    "-D400",
+    "-F405",
+    "-WPS215",
+    "-RST301",
+    "-WPS421",
+    "-RST203",
+    "-RST201",
+
+
+]
+
+[tool.flakeheaven.exceptions."*/tests/*.py"]
+# additional errors to ignore in tests
+"*" = [
+    "-D103", # Docstings at tests
+    "-B010", # Do not call setattr (for tests only)
+    "-S101", # Asserts are forbidden, but in tests we are using them
+    "-S105", # hardcoded password string
+    "-S404", # Consider possible security implications
+    "-S607", # start process with partial path
+    "-WPS211", # too many arguments
+    "-WPS118", # Found too long name
+    "-WPS204", # Found overused expressions (ok for test reasons)
+    "-WPS210", # Found too many local variables
+    "-WPS442", # Outer scope names shadowing. It conftest we have fixtures.
+]
+
+
+[tool.flakeheaven.exceptions."*serializers*"]
+"*" = [
+    "-WPS226", # Found string literal over-use (kwargs in extra kwargs and field names)
+    "-WPS432", # Found magic number (len, default and limits)
+    ]
+
+[tool.flakeheaven.exceptions."*/models/*.py"]
+"*" = [
+    "-WPS432", # Found magic number (Char len in database)
+    "-WPS431", # Found nested class: Meta"
+    ]
+
+[tool.flakeheaven.exceptions."*/migrations/*.py"]
+"*" = ["-*"] # Don't check migrations
