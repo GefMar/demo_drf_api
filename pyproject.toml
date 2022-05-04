@@ -73,6 +73,11 @@ inline_quotes = "double"
     "-WPS421",
     "-RST203",
     "-RST201",
+    "-WPS436",
+    "-S311",
+    "-WPS237",
+    "-WPS432",
+    "-WPS221",
 
 
 ]
@@ -91,6 +96,12 @@ inline_quotes = "double"
     "-WPS204", # Found overused expressions (ok for test reasons)
     "-WPS210", # Found too many local variables
     "-WPS442", # Outer scope names shadowing. It conftest we have fixtures.
+    "-WPS458",
+    "-WPS432",
+    "-S311",
+    "-PT023",
+    "-WPS436",
+
 ]
 
 

@@ -4,4 +4,4 @@ from .views import NotificationsViewSet
 
 api_router = routers.DefaultRouter()
 
-api_router.register("notification", NotificationsViewSet)
+api_router.register("notification", NotificationsViewSet, basename="notification")
