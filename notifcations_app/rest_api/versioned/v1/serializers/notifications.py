@@ -6,3 +6,6 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Notification
         fields = "__all__"
+
+    def save(self):
+        super().save()

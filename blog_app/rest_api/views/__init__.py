@@ -1,1 +1,2 @@
-from .post import PostViewSet
+from .comments import CommentViewSet
+from .posts import PostViewSet

@@ -27,7 +27,7 @@ inline_quotes = "double"
     "+*", # enable all plugins
     "-I*", # disable isort
     "-DAR*", # disable docstring arguments linting by darglint
-# ignore errors:
+    # ignore errors:
     "-D100", #  Docstring in public module
     "-D104", #  Docstring in public package
     "-D106", #  Docstring in public nested class
@@ -78,8 +78,10 @@ inline_quotes = "double"
     "-WPS237",
     "-WPS432",
     "-WPS221",
-
-
+    "-WPS615",
+    "-WPS612",
+    "-WPS608",
+    "-WPS613",
 ]
 
 [tool.flakeheaven.exceptions."*/tests/*.py"]
@@ -101,7 +103,6 @@ inline_quotes = "double"
     "-S311",
     "-PT023",
     "-WPS436",
-
 ]
 
 
@@ -109,13 +110,13 @@ inline_quotes = "double"
 "*" = [
     "-WPS226", # Found string literal over-use (kwargs in extra kwargs and field names)
     "-WPS432", # Found magic number (len, default and limits)
-    ]
+]
 
 [tool.flakeheaven.exceptions."*/models/*.py"]
 "*" = [
     "-WPS432", # Found magic number (Char len in database)
     "-WPS431", # Found nested class: Meta"
-    ]
+]
 
 [tool.flakeheaven.exceptions."*/migrations/*.py"]
 "*" = ["-*"] # Don't check migrations
